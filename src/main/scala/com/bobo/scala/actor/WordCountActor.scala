@@ -21,9 +21,18 @@ class Task extends Actor {
       react {
         case SubmitTask(fileName) => {
           val file = Source.fromFile(new File(fileName)).mkString
-          var arr = file.split("\r\n")
-          val result = arr.flatMap(_.split(" ")).map((_, 1)).groupBy(_._1).mapValues(_.length)
-          sender ! ResultCalss(result)
+          val arr = file.split("\r\n")
+          val result = arr.flatMap(_.split(" "))
+          val values = result.map((_, 1))
+          val by = values.groupBy(_._1)
+          val maybeTuples = by.get("tom").get
+          println(
+            maybeTuples
+          )
+          println()
+
+          val mapValues = by.mapValues(_.length)
+          sender ! ResultCalss(mapValues)
 
         }
         case StopTask => {
@@ -42,15 +51,15 @@ object WorkCount {
     val replaySet = new mutable.HashSet[Future[Any]]
     val resultList = new mutable.ListBuffer[ResultCalss]
 
-    for(f <- files) {
+    for (f <- files) {
       val t = new Task
       val replay = t.start() !! SubmitTask(f)
       replaySet += replay
     }
 
-    while(replaySet.size > 0){
+    while (replaySet.size > 0) {
       val toCumpute = replaySet.filter(_.isSet)
-      for(r <- toCumpute){
+      for (r <- toCumpute) {
         val result = r.apply()
         resultList += result.asInstanceOf[ResultCalss]
         replaySet.remove(r)
