@@ -2,12 +2,17 @@ package com.bobo.scala.itcast.collect
 
 object ImmutListDemo extends App {
 
+  val arr = Array(Array("P门户", "安徽", 19), Array(2, "WAP门户", "北京", 59), Array(3, "WAP门户", "电信", 8))
+
   //创建一个不可变的集合
   val lst1 = List(1, 2, 3)
   //将0插入到lst1的前面生成一个新的List
   val lst2 = 0 :: lst1
+  0 :: lst1
   val lst3 = lst1.::(0)
+  lst1.::(0)
   val lst4 = 0 +: lst1
+  0+:lst1
   val lst5 = lst1.+:(0)
 
   //将一个元素添加到lst1的后面产生一个新的集合

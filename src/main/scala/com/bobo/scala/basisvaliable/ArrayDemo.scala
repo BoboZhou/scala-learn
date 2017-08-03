@@ -20,10 +20,15 @@ object ArrayDemo {
     buffer ++= Array(5, 6)
     buffer ++= ArrayBuffer(7, 8)
     println(buffer)
-    buffer.insert(0,-1,9,10)
+    buffer.insert(0, -1, 9, 10)
     println(buffer)
 
+    testdd()
+  }
 
+  def testdd(a: Int = 4): Unit = {
+
+    println(a)
   }
 
 }
