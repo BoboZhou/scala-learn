@@ -62,7 +62,7 @@ object IPLocation {
     val conf = new SparkConf().setMaster("local[2]").setAppName("IpLocation")
     val sc = new SparkContext(conf)
 
-    val ipRulesRdd = sc.textFile("c://ip.txt").map(line =>{
+    val ipRulesRdd = sc.textFile("d://ip.txt").map(line =>{
       val fields = line.split("\\|")
       val start_num = fields(2)
       val end_num = fields(3)
@@ -76,7 +76,7 @@ object IPLocation {
     val ipRulesBroadcast = sc.broadcast(ipRulesArrary)
 
     //加载要处理的数据
-    val ipsRDD = sc.textFile("c://access_log").map(line => {
+    val ipsRDD = sc.textFile("d://access_log.log").map(line => {
       val fields = line.split("\\|")
       fields(1)
     })
@@ -93,7 +93,7 @@ object IPLocation {
     result.foreachPartition(data2MySQL(_))
 
 
-    //println(result.collect().toBuffer)
+    println(result.collect().toBuffer)
 
     sc.stop()
 

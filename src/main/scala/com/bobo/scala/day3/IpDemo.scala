@@ -51,7 +51,7 @@ object IPLocationDemo {
     val ip = "120.55.185.61"
     val ipNum = ip2Long(ip)
     println(ipNum)
-    val lines = readData("c:/ip.txt")
+    val lines = readData("d:/ip.txt")
     val index = binarySearch(lines, ipNum)
     print(lines(index))
   }
