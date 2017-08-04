@@ -27,7 +27,7 @@ object UserLocationBobo {
       (x._2._2._1, (x._1, x._2._2._2, x._2._1._1, x._2._1._2))
     })
     rdd3.map(x => {
-      (x._1+"-"+x._2._1,(x._2._1,x._2._3,x._2._4))
+      (x._1 + "-" + x._2._1, (x._2._1, x._2._3, x._2._4))
     })
     println(rdd3.collect().toBuffer)
     sc.stop()
