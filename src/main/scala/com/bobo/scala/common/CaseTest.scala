@@ -35,6 +35,8 @@ object CaseTest {
     // println(result)
     val item = new Rat(1, 2)
     println(item.isInstanceOf[Rat])
+    val key: Option[String]= Some("obob")
+    println(key.get)
 
   }
 }
