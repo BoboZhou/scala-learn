@@ -26,7 +26,7 @@ object TopK {
 
     })
     val rddTop = rdd2.map(x=>{
-      (x._1,x._2.sortWith())
+//      (x._1,x._2.sortBy()
     })
     println(rdd2.collect().toBuffer)
     sc.stop()
