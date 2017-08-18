@@ -25,8 +25,8 @@ object TopK {
       (user, sourceArr._2 / sourceArr._1)
 
     })
-    val rddTop = rdd2.map(x=>{
-//      (x._1,x._2.sortBy()
+    val rddTop = rdd2.map(x => {
+      //      (x._1,x._2.sortBy()
     })
     println(rdd2.collect().toBuffer)
     sc.stop()

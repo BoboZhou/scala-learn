@@ -1,5 +1,6 @@
 package com.bobo.scala;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -10,6 +11,9 @@ import java.util.Map;
 public class Good {
     public static void main(String[] args) {
         print(1, 5);
+        Date date = new Date();
+        int day = date.getDay();
+        System.out.println(day);
     }
 
     static void print(int x, int n) {
@@ -34,4 +38,5 @@ public class Good {
         System.out.println(" ");
         print(x + 1, n);
     }
+
 }
