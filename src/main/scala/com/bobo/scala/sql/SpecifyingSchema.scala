@@ -10,10 +10,24 @@ object SpecifyingSchema {
     val conf = new SparkConf().setAppName("SQL-2").setMaster("local")
     //SQLContext要依赖SparkContext
     val sc = new SparkContext(conf)
+    val a = sc.parallelize(1 to 9, 3)
+
+    def iterFunc[T](iter: Iterator[T]): Iterator[(T, T)] = {
+      var res = List[(T, T)]
+      var pre = iter.next()
+      while (iter.hasNext) {
+        val cur = iter.next()
+        res = res :: (pre, cur)
+        per = cur
+      }
+
+    }
+
     //创建SQLContext
     val sqlContext = new SQLContext(sc)
     //从指定的地址创建RDD
     val personRDD = sc.textFile("hdfs://hdp01:9000/person.txt").map(_.split(" "))
+    personRDD.count()
     //通过StructType直接指定每个字段的schema
     val schema = StructType(
       List(

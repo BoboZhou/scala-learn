@@ -14,8 +14,6 @@ object GameKPI {
     val endTime = TimeUtils.getCertainDayTime(+1)
     val conf = new SparkConf().setAppName("GameKPI").setMaster("local[*]")
     val sc = new SparkContext(conf)
-
-
     //切分之后的数据
     val splitedLogs = sc.textFile("D:\\3期\\code\\scala-learn\\src\\main\\resources\\GameLog.txt").map(_.split("\\|"))
     //过滤后并缓冲
@@ -51,4 +49,5 @@ object GameKPI {
     sc.stop()
   }
 }
+
 // create table GameKPI (id, gamename, zone, datetime, dnu, dau, d1rr, d7rr ... )
